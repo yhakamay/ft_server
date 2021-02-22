@@ -1,0 +1,48 @@
+# 80: httpでアクセスするポート
+# 301: リダイレクト先を指定。 https:// にリダイレクトさせる。(443ポートへ）
+# 443: https でアクセスするポート
+# see: https://note.com/syamashi/n/nd296e3e46dab
+
+# Default server configuration
+server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+
+	server_name _;
+
+	return 301 https://$host$request_uri;
+}
+
+# SSL configuration
+server {
+	listen 443 ssl default_server;
+	listen [::]:443 ssl default_server;
+
+	root /var/www/html;
+	index index.php index.html index.htm index.nginx-debian.html;
+
+	server_name example.com;
+
+	location / {
+		autoindex {{ var "AUTOINDEX" | default "on" }};
+		try_files $uri $uri/ /index.php?$args;
+	}
+
+	location ~* /wp-config.php {
+		deny all;
+	}
+
+	location ~ \.php$ {
+		include snippets/fastcgi-php.conf;
+		fastcgi_pass unix:/run/php/php7.3-fpm.sock;
+	}
+
+	# deny access to .htaccess files, if Apache's document root
+	# concurs with nginx's one
+	location ~ /\.ht {
+		deny all;
+	}
+
+	ssl_certificate		/etc/nginx/certificate/server.crt;
+	ssl_certificate_key	/etc/nginx/certificate/server.key;
+}
