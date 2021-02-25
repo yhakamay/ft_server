@@ -9,8 +9,9 @@ This is my project in 42 Tokyo.
 
 ## Remarks
 - It doesn't work with the latest MacBook Air/Pro (M1).
-- If you desire to run it with M1, you have to add following in `.zshrc`: ```export DOCKER_BUILDKIT=0
-export COMPOSE_DOCKER_CLI_BUILD=0```
+- If you desire to run it with M1, you have to add following in `.zshrc`: 
+  ```export DOCKER_BUILDKIT=0
+     export COMPOSE_DOCKER_CLI_BUILD=0```
 
 ## Usage
 1. `cd Desktop && git clone git@github.com:yhakamay/ft_server.git ft_server_yhakamay && cd ft_server_yhakamay`
