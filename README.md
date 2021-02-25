@@ -12,7 +12,7 @@ This is my project in 42 Tokyo.
 - If you desire to run it with M1, you have to add following in `.zshrc`: 
   ```
   export DOCKER_BUILDKIT=0
-  exportCOMPOSE_DOCKER_CLI_BUILD=0
+  export COMPOSE_DOCKER_CLI_BUILD=0
   ```
 
 ## Usage
