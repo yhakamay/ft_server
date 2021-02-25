@@ -62,12 +62,6 @@ RUN	service mysql start \
 	DEFAULT COLLATE utf8_unicode_ci; \
 	GRANT ALL ON wordpress.* TO wp_admin@localhost identified by 'password'"
 
-# expose two ports: 80 and 443
-# see: https://www.whitesourcesoftware.com/free-developer-tools/blog/docker-expose-port/
-EXPOSE 80
-EXPOSE 443
+EXPOSE 80 443
 
-# initialize the container using entrykit
-# using entrykit is faster than 'CMD tail -f /dev/null'
-# see: https://qiita.com/hihihiroro/items/d7ceaadc9340a4dbeb8f
 ENTRYPOINT ["render", "/etc/nginx/sites-available/default", "--", "bash", "./getstarted.sh"]
