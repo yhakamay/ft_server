@@ -6,7 +6,7 @@
 #    By: yhakamaya <yhakamaya@student.42tokyo.      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/14 11:56:54 by yhakamaya         #+#    #+#              #
-#    Updated: 2021/02/14 11:56:56 by yhakamaya        ###   ########.fr        #
+#    Updated: 2021/02/25 16:13:38 by yhakamaya        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,7 +85,7 @@ RUN set -ex; \
 # make the user 'www-data' (nginx) can access /var/www
 # see: https://unix.stackexchange.com/questions/295483/chown-r-www-datawww-data-sets-ownership-to-root
 RUN set -ex; \
-	chown -R www-data:www-data /var/www
+	chown -R www-data:www-data /var/www/html/index.nginx-debian.html
 
 # start mysql and grant access of mysql to user 'wp_admin'
 # see: https://uxmilk.jp/12323
